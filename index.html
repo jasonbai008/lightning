@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <title>球状闪电</title>
     <style>
       body {
@@ -47,10 +48,7 @@
         color: #fff;
       }
     </style>
-    <script
-      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-      type="module"
-    ></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
   </head>
   <body>
     <!-- logo -->
@@ -89,7 +87,9 @@
 
       items.addEventListener("click", (e) => {
         if (e.target.tagName === "BUTTON") {
-          document.querySelector('h2').innerHTML = `球状闪电(${e.target.innerHTML})`
+          document.querySelector(
+            "h2"
+          ).innerHTML = `球状闪电(${e.target.innerHTML})`;
           player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
           setTimeout(() => player.play(), 3000);
         }
