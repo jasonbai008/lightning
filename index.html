@@ -11,7 +11,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        padding-top: 160px;
+        padding-top: 150px;
       }
       dotlottie-player {
         position: absolute;
@@ -26,7 +26,7 @@
         margin: 20px auto;
       }
       .items {
-        width: 300px;
+        width: 310px;
         margin: 20px auto;
         height: calc(100vh - 385px);
         display: flex;
@@ -36,8 +36,8 @@
         align-content: flex-start;
       }
       button {
-        width: 40px;
-        margin: 10px;
+        width: 42px;
+        margin: 9px;
       }
     </style>
     <script
@@ -78,7 +78,7 @@
         let label = String(i + 1).padStart(2, "0");
         html += `<button>${label}</button>`;
       }
-      items.innerHTML = html;
+      items.innerHTML = html + `<button>后记</button>`;
 
       items.addEventListener("click", (e) => {
         if (e.target.tagName === "BUTTON") {
