@@ -11,19 +11,33 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        padding-top: 170px;
+        padding-top: 160px;
       }
       dotlottie-player {
         position: absolute;
         top: 0px;
-        left: calc(50vw - 100px);
+        left: calc(50vw - 85px);
       }
       h2 {
         text-align: center;
       }
       audio {
         display: block;
-        margin: 40px auto;
+        margin: 20px auto;
+      }
+      .items {
+        width: 300px;
+        margin: 20px auto;
+        height: calc(100vh - 385px);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-start;
+      }
+      button {
+        width: 40px;
+        margin: 10px;
       }
     </style>
     <script
@@ -32,23 +46,46 @@
     ></script>
   </head>
   <body>
+    <!-- logo -->
     <dotlottie-player
       src="atom.json"
       background="transparent"
       speed="1"
-      style="width: 200px; height: 200px"
+      style="width: 170px; height: 170px"
       direction="1"
       playMode="normal"
       loop
       autoplay
     ></dotlottie-player>
+    <!-- 标题和播放器 -->
     <h2>球状闪电</h2>
     <audio src="" controls></audio>
 
+    <!-- 选集 -->
+    <div class="items"></div>
+
     <script>
-        document.querySelector('dotlottie-player').addEventListener('ready', (e)=> {
-            console.log(e)
-        })
+      document
+        .querySelector("dotlottie-player")
+        .addEventListener("ready", (e) => {
+          console.log(e);
+        });
+
+      const player = document.querySelector("audio");
+      const items = document.querySelector(".items");
+      let html = "";
+      for (let i = 0; i < 55; i++) {
+        let label = String(i + 1).padStart(2, "0");
+        html += `<button>${label}</button>`;
+      }
+      items.innerHTML = html;
+
+      items.addEventListener("click", (e) => {
+        if (e.target.tagName === "BUTTON") {
+          player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
+          setTimeout(() => player.play(), 3000);
+        }
+      });
     </script>
   </body>
 </html>
