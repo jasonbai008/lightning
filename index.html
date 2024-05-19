@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <title>球状闪电</title>
-    <style>
-      body {
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        padding-top: 120px;
-      }
-      dotlottie-player {
-        position: absolute;
-        top: 0px;
-        left: calc(50vw - 85px);
-        z-index: -1;
-      }
-      h2 {
-        text-align: center;
-        letter-spacing: 1px;
-        color: #333;
-      }
-      audio {
-        display: block;
-        margin: 20px auto;
-      }
-      .items {
-        width: 310px;
-        margin: 20px auto;
-        height: calc(100vh - 385px);
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        align-content: flex-start;
-      }
-      button {
-        width: 44px;
-        margin: 8px;
-      }
-      button:focus {
-        background-color: #bf2af6;
-        color: #fff;
-      }
-    </style>
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
-  </head>
-  <body>
-    <!-- logo -->
-    <dotlottie-player
-      src="atom.json"
-      background="transparent"
-      speed="1"
-      style="width: 170px; height: 170px"
-      direction="1"
-      playMode="normal"
-      loop
-      autoplay
-    ></dotlottie-player>
-    <!-- 标题和播放器 -->
-    <h2>球状闪电</h2>
-    <audio src="" controls></audio>
 
-    <!-- 选集 -->
-    <div class="items"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <title>球状闪电</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      padding-top: 120px;
+    }
 
-    <script>
-      document
-        .querySelector("dotlottie-player")
-        .addEventListener("ready", (e) => {
-          console.log(e);
-        });
+    dotlottie-player {
+      position: absolute;
+      top: 0px;
+      left: calc(50vw - 85px);
+      z-index: -1;
+    }
 
-      const player = document.querySelector("audio");
-      const items = document.querySelector(".items");
-      let html = "";
-      for (let i = 0; i < 55; i++) {
-        let label = String(i + 1).padStart(2, "0");
-        html += `<button>${label}</button>`;
+    h2 {
+      text-align: center;
+      letter-spacing: 1px;
+      color: #333;
+    }
+
+    audio {
+      display: block;
+      margin: 20px auto;
+    }
+
+    .items {
+      width: 310px;
+      margin: 20px auto;
+      height: calc(100vh - 385px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    button {
+      width: 44px;
+      margin: 8px;
+    }
+
+    button:focus {
+      background-color: #bf2af6;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 动画logo -->
+  <dotlottie-player src="atom.json" background="transparent" speed="1" style="width: 170px; height: 170px" direction="1"
+    playMode="normal" loop autoplay></dotlottie-player>
+  <!-- 标题和播放器 -->
+  <h2>球状闪电</h2>
+  <audio src="" controls></audio>
+
+  <!-- 选集 -->
+  <div class="items"></div>
+
+  <!-- 引入dotlottie-player脚本，没有min版本，不要mjs版本 -->
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
+  <script>
+    // 监听dotlottie的官方事件
+    document.querySelector("dotlottie-player").addEventListener("ready", (e) => console.log(e));
+
+    const player = document.querySelector("audio");
+    const items = document.querySelector(".items");
+
+    // 构造选集按钮集合
+    let html = "";
+    for (let i = 0; i < 55; i++) {
+      let label = String(i + 1).padStart(2, "0");
+      html += `<button>${label}</button>`;
+    }
+    items.innerHTML = html + `<button>后记</button>`;
+
+    // 事件委托
+    items.addEventListener("click", (e) => {
+      if (e.target.tagName === "BUTTON") {
+        document.querySelector("h2").innerHTML = `球状闪电(${e.target.innerHTML})`;
+        player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
+        setTimeout(() => player.play(), 4000);
       }
-      items.innerHTML = html + `<button>后记</button>`;
+    });
+  </script>
+</body>
 
-      items.addEventListener("click", (e) => {
-        if (e.target.tagName === "BUTTON") {
-          document.querySelector(
-            "h2"
-          ).innerHTML = `球状闪电(${e.target.innerHTML})`;
-          player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
-          setTimeout(() => player.play(), 3000);
-        }
-      });
-    </script>
-  </body>
 </html>
