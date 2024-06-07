@@ -14,6 +14,7 @@
       padding: 0;
       overflow: hidden;
       padding-top: 120px;
+      background: #f1f3f4;
     }
 
     lottie-player {
@@ -45,14 +46,32 @@
       align-content: flex-start;
     }
 
-    button {
-      width: 44px;
-      margin: 8px;
+    .btn {
+      display: grid;
+      place-items: center;
+      background: #f1f3f4;
+      /* padding: 1.4em; */
+      border-radius: 4px;     
+      box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0);
+      cursor: pointer;
+      transition: transform 0.5s;
     }
 
-    button:focus {
-      background-color: #bf2af6;
-      color: #fff;
+    .btn:hover {
+      box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+        inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+        -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+        0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+        0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transform: translateY(0.1em);
+    }
+
+    button {
+      width: 54px;
+      margin: 8px;
     }
   </style>
 </head>
@@ -84,9 +103,9 @@
     let html = "";
     for (let i = 0; i < 55; i++) {
       let label = String(i + 1).padStart(2, "0");
-      html += `<button>${label}</button>`;
+      html += `<button class="btn">${label}</button>`;
     }
-    items.innerHTML = html + `<button>后记</button>`;
+    items.innerHTML = html + `<button class="btn">后记</button>`;
 
     // 事件委托
     items.addEventListener("click", (e) => {
