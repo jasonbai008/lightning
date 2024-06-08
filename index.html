@@ -60,7 +60,8 @@
       transition: transform 0.3s;
     }
 
-    .btn:hover {
+    .btn:hover,
+    .btn.active {
       box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
         inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
         -0.5px -0.5px 0px rgba(255, 255, 255, 1),
@@ -105,6 +106,8 @@
     items.addEventListener("click", (e) => {
       if (e.target.tagName === "BUTTON") {
         document.querySelector("h2").innerHTML = `球状闪电(${e.target.innerHTML})`;
+        items.childNodes.forEach(node => node.classList.remove('active'))
+        e.target.tagName.classList.add('active')
         player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
         setTimeout(() => player.play(), 4000);
       }
