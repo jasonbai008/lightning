@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-  <title>球状闪电</title>
+  <title>球状闪电-刘慈欣中篇科幻小说</title>
   <style>
     body {
       width: 100vw;
@@ -16,13 +16,16 @@
       padding-top: 1px;
       background: #f1f3f4;
       box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    
+
     h2 {
       text-align: center;
       letter-spacing: 2px;
       color: #444;
-      margin-top: 3vh;
+      margin-top: 0px;
       font-weight: normal;
     }
 
@@ -30,16 +33,12 @@
       display: block;
       margin: 20px auto;
       border-radius: 50px;
-      box-shadow: 1px 1px 2px #fff,-1px -1px 2px #ccc;
-      /* background: linear-gradient(145deg, #cacaca, #f0f0f0);
-      box-shadow: 10px 10px 20px #bebebe,
-        -10px -10px 20px #ffffff; */
+      box-shadow: 1px 1px 2px #fff, -1px -1px 2px #ccc;
     }
 
     .items {
       width: 310px;
       margin: 0px auto;
-      height: calc(100vh - 385px);
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -58,7 +57,7 @@
         -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(0, 0, 0, 0);
       cursor: pointer;
-      transition: transform 0.5s;
+      transition: transform 0.3s;
     }
 
     .btn:hover {
@@ -79,14 +78,16 @@
 </head>
 
 <body>
-  <!-- 标题 -->
-  <h2>球状闪电</h2>
+  <div class="center">
+    <!-- 标题 -->
+    <h2>球状闪电</h2>
 
-  <!-- 播放器 -->
-  <audio src="" controls></audio>
+    <!-- 播放器 -->
+    <audio src="" controls></audio>
 
-  <!-- 选集 -->
-  <div class="items"></div>
+    <!-- 选集 -->
+    <div class="items"></div>
+  </div>
 
   <script>
     const player = document.querySelector("audio");
