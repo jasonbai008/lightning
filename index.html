@@ -93,18 +93,21 @@
   <script>
     const player = document.querySelector("audio");
     const items = document.querySelector(".items");
+    let n = 0;
 
     // 构造选集按钮集合
     let html = "";
     for (let i = 0; i < 55; i++) {
       let label = String(i + 1).padStart(2, "0");
-      html += `<button class="btn">${label}</button>`;
+      html += `<button class="btn" data-n="${i + 1}">${label}</button>`;
     }
-    items.innerHTML = html + `<button class="btn">后记</button>`;
+    items.innerHTML = html + `<button class="btn" data-n="56">后记</button>`;
 
     // 事件委托
     items.addEventListener("click", (e) => {
       if (e.target.tagName === "BUTTON") {
+        n = Number(e.target.dataset.n)
+        localStorage.lightningNum = n
         document.querySelector("h2").innerHTML = `球状闪电(${e.target.innerHTML})`;
         items.childNodes.forEach(node => node.classList.remove('active'))
         e.target.classList.add('active')
@@ -112,6 +115,15 @@
         setTimeout(() => player.play(), 4000);
       }
     });
+
+    // 页面初始化，提取记忆
+    if (localStorage.lightningNum) {
+      n = Number(localStorage.lightningNum)
+      document.querySelector(`.btn:nth-child(${n})`).classList.add('active')
+      let name = String(n).padStart(2, "0");
+      if (n === 56) name = '后记'
+      player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${name}.mp3`;
+    }
   </script>
 </body>
 
