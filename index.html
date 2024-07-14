@@ -112,7 +112,8 @@
         document.querySelector("h2").innerHTML = `球状闪电(${e.target.innerHTML})`;
         items.childNodes.forEach(node => node.classList.remove('active'))
         e.target.classList.add('active')
-        player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
+        // player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${e.target.innerHTML}.mp3`;
+        player.src = `https://qiuzhuang.pages.dev/球状闪电_${e.target.innerHTML}.mp3`;
         setTimeout(() => player.play(), 4000);
       }
     });
@@ -129,7 +130,8 @@
       document.querySelector(`.btn:nth-child(${n})`).classList.add('active')
       let name = String(n).padStart(2, "0");
       if (n === 56) name = '后记'
-      player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${name}.mp3`;
+      // player.src = `https://jasonbai008.github.io/asset3/mp3/球状闪电_${name}.mp3`;
+      player.src = `https://qiuzhuang.pages.dev/球状闪电_${name}.mp3`;
       document.querySelector("h2").innerHTML = `球状闪电(${name})`;
     }
 
